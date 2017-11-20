@@ -1,0 +1,87 @@
+
+
+** Bokeh plot
+
+
+#+BEGIN_SRC ipython
+X.head()
+#+END_SRC
+
+#+BEGIN_SRC ipython :session
+from bokeh.layouts import gridplot
+from bokeh.io import output_file, show
+from bokeh.plotting import figure
+from bokeh.models import ColumnDataSource
+
+source = ColumnDataSource(X)
+
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+
+:END:
+
+
+['physiotherapy', 'obstetrics', 'geriatrics', 'pharmaceuticals']
+
+plot = figure(tools='box_select, lasso_select')
+
+#+BEGIN_SRC ipython :session
+p1 = figure(title='physiotherapy vs obsterics',tools='box_select')
+p1.circle('physiotherapy', 'obstetrics',
+    color='blue', source=source)
+p2 = figure(title='physiotherapy vs geriatrics',tools='box_select')
+p2.circle('physiotherapy', 'geriatrics',
+    color='green', source=source)
+p3 = figure(title='physiotherapy vs pharmaceuticals',tools='box_select')
+p3.circle('physiotherapy', 'pharmaceuticals',
+    line_color='red', fill_color=None,
+    source=source)
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+
+GlyphRenderer(id='a6d37d30-cea7-48e5-9f19-ae8a6b64736c', ...)
+#+BEGIN_EXPORT HTML
+<div style="display: table;"><div style="display: table-row;"><div style="display: table-cell;"><b title="bokeh.models.renderers.GlyphRenderer">GlyphRenderer</b>(</div><div style="display: table-cell;">id&nbsp;=&nbsp;'a6d37d30-cea7-48e5-9f19-ae8a6b64736c', <span id="28c6c5a6-7e1f-402c-ba40-d3905e9a1a1d" style="cursor: pointer;">&hellip;)</span></div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">data_source&nbsp;=&nbsp;ColumnDataSource(id='2007e2a9-5304-4e55-a9f0-9d1540c2baa9', ...),</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">glyph&nbsp;=&nbsp;Circle(id='5fc1e31d-7250-4b03-9551-4654c4db3c7e', ...),</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">hover_glyph&nbsp;=&nbsp;None,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_event_callbacks&nbsp;=&nbsp;{},</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">js_property_callbacks&nbsp;=&nbsp;{},</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">level&nbsp;=&nbsp;'glyph',</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">muted&nbsp;=&nbsp;False,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">muted_glyph&nbsp;=&nbsp;None,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">name&nbsp;=&nbsp;None,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">nonselection_glyph&nbsp;=&nbsp;Circle(id='b7ca60dc-95e6-4dfe-88c6-b68d9c4de3c2', ...),</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">selection_glyph&nbsp;=&nbsp;None,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">subscribed_events&nbsp;=&nbsp;[],</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">tags&nbsp;=&nbsp;[],</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">view&nbsp;=&nbsp;CDSView(id='00ca0246-eee8-4970-88fa-30ad4bfa0689', ...),</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">visible&nbsp;=&nbsp;True,</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">x_range_name&nbsp;=&nbsp;'default',</div></div><div class="f80d8573-0a57-4dcd-a396-c78828d46c41" style="display: none;"><div style="display: table-cell;"></div><div style="display: table-cell;">y_range_name&nbsp;=&nbsp;'default')</div></div></div>
+<script>
+(function() {
+  var expanded = false;
+  var ellipsis = document.getElementById("28c6c5a6-7e1f-402c-ba40-d3905e9a1a1d");
+  ellipsis.addEventListener("click", function() {
+    var rows = document.getElementsByClassName("f80d8573-0a57-4dcd-a396-c78828d46c41");
+    for (var i = 0; i < rows.length; i++) {
+      var el = rows[i];
+      el.style.display = expanded ? "none" : "table-row";
+    }
+    ellipsis.innerHTML = expanded ? "&hellip;)" : "&lsaquo;&lsaquo;&lsaquo;";
+    expanded = !expanded;
+  });
+})();
+</script>
+
+#+END_EXPORT
+:END:
+
+#+BEGIN_SRC ipython :session :results output drawer
+p3.x_range = p2.x_range = p1.x_range
+p3.y_range = p2.y_range = p1.y_range
+
+layout = gridplot([[None, p1],[p2,p3]])
+output_file('bokeh_test.html')
+show(layout)
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+
+:END:
+
+#+BEGIN_SRC ipython :session :results output drawer
+from IPython.display import display, IFrame
+display(IFrame('bokeh_test.html', 800,800)) 
+#+END_SRC
+
+[[./bokeh_test.html]]
